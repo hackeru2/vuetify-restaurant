@@ -28,14 +28,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Delete Cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.npm
-            ~/.cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-        if: ${{ steps.deploy.outputs.cache-hit != 'true' }}
+      - name: List contents of the build directory
+        run: ls -l ./dist
+      - name: Display the content of a specific file (e.g., main.js)
+        run: cat ./dist/main.js
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
