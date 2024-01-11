@@ -8,6 +8,7 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "vuejs-vuetify-furniture-web-site",
   plugins: [
     vue({
       template: { transformAssetUrls },
