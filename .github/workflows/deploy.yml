@@ -46,6 +46,8 @@ jobs:
         with:
           # Upload dist repository
           path: "./dist"
+      - name: Display Message
+        run: echo "This is a custom message"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
