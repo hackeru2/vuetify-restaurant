@@ -28,6 +28,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Delete Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            ~/.cache
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        if: ${{ steps.deploy.outputs.cache-hit != 'true' }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
