@@ -28,10 +28,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: List contents of the build directory
-        run: ls -l ./dist
-      - name: Display the content of a specific file (e.g., main.js)
-        run: cat ./dist/main.js
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
@@ -46,7 +42,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist repository
           path: "./dist"
@@ -54,4 +50,4 @@ jobs:
         run: echo "This is a custom message"
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
